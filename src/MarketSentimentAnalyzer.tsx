@@ -86,7 +86,7 @@ const MarketSentimentAnalyzer: React.FC = () => {
   const [searchResults, setSearchResults] = useState<CompanySearchResult[]>([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [companiesWithBetterSentiment, setCompaniesWithBetterSentiment] = useState<CompanyWithSentiment[]>([]);
-  const [currentSentiment, setCurrentSentiment] = useState(0);
+  // const [currentSentiment, setCurrentSentiment] = useState(0);
   const [companyProfile, setCompanyProfile] = useState<CompanyProfile | null>(null);
 
   const getDateRange = (days: number) => {
@@ -305,7 +305,7 @@ const MarketSentimentAnalyzer: React.FC = () => {
       }
       
       setCompanyProfile(profile);
-      const industry = profile.finnhubIndustry || profile.sector || 'Unknown';
+      // const industry = profile.finnhubIndustry || profile.sector || 'Unknown';
       
       // Get peer companies in the same industry
       const peers = await fetchPeerCompanies(currentSymbol);
@@ -731,9 +731,9 @@ const MarketSentimentAnalyzer: React.FC = () => {
                 outerRadius={80}
                 label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
               >
-                {pieData.map((entry, index) => (
+{/*                 {pieData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index]} />
-                ))}
+                ))} */}
               </Pie>
               <Tooltip formatter={(value) => [`${value} articles`, 'Count']} />
               <Legend />
@@ -786,7 +786,7 @@ const MarketSentimentAnalyzer: React.FC = () => {
                   boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
                 }}
                 formatter={(value, name) => {
-                  if (name === 'Avg Sentiment') return [value.toFixed(2), name];
+                  // if (name === 'Avg Sentiment') return [value.toFixed(2), name];
                   if (name === 'Stock Price ($)') return [`$${value}`, name];
                   return [value, name];
                 }}
@@ -853,7 +853,8 @@ const MarketSentimentAnalyzer: React.FC = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx>
+        {`
         .market-sentiment-app {
           max-width: 1200px;
           margin: 0 auto;
